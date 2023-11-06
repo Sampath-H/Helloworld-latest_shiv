@@ -1,0 +1,28 @@
+pipeline {
+    agent { label "ABC_Project" }
+    
+    triggers {
+        pollSCM('* * * * *')
+    }    
+
+    stages {
+        stage('Step 1') {
+            steps {
+                echo 'clone Hello_Project1'
+                git branch: 'main', url: 'https://github.com/Shivakumarb906/Helloworld-latest.git'
+            }
+        }
+        stage('Step 2') {
+            steps {
+                echo 'Build project'
+                sh 'mvn clean package'
+            }
+        }
+        stage('Step 3') {
+            steps {
+                echo 'Deploy project'
+                deploy adapters: [tomcat8(credentialsId: 'Admin', path: '', url: 'http://54.169.100.49:8080/')], contextPath: null, war: '**/*.war'
+            }
+        }
+    }
+}
