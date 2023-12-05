@@ -9,7 +9,7 @@ pipeline {
         stage('Step 1') {
             steps {
                 echo 'clone Hello_Project1'
-                git branch: 'main', url: 'https://github.com/Shivakumarb906/Helloworld-latest.git'
+                git branch: 'main', url: 'https://github.com/Sampath-H/Helloworld-latest_shiv.git'
             }
         }
         stage('Step 2') {
