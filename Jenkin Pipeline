@@ -1,5 +1,5 @@
 pipeline {
-    agent { label "ABC_Project" }
+    agent { label "HDFC_bank" }
     
     triggers {
         pollSCM('* * * * *')
@@ -21,7 +21,7 @@ pipeline {
         stage('Step 3') {
             steps {
                 echo 'Deploy project'
-                deploy adapters: [tomcat8(credentialsId: 'admin', path: '', url: 'http://54.169.238.52:8080/')], contextPath: null, war: '**/*.war'
+                deploy adapters: [tomcat8(credentialsId: 'admin', path: '', url: 'http://54.86.72.142:8080/')], contextPath: null, war: '**/*.war'
             }
         }
     }
